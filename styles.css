@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #D2042D;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+h1 {
+    color: #D2042D;
+    text-align: center;
+}
+
+label, select, input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #D2042D;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #D2042D;
+}
+
+.options {
+    display: none;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #D2042D;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+select, input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+select:focus, input:focus {
+    outline: none;
+    border-color: #D2042D;
+}
+
+form {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

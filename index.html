@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sudeep Battery Works</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    </head>
+<body>
+    <div class="container">
+        <h1>Sudeep Battery Works</h1>
+        <form id="batteryForm">
+            <label for="date">Choose a date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="batteryType">Choose a battery type:</label>
+            <select id="batteryType" name="batteryType" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="motorcycle">Motorcycle</option>
+                <option value="automotive">Automotive</option>
+            </select>
+
+            <div id="motorcycleOptions" class="options">
+                <label for="motorcycleModel">Choose a motorcycle battery model:</label>
+                <select id="motorcycleModel" name="motorcycleModel">
+                    <option value="exideXplore">Exide Xplore</option>
+                </select>
+            </div>
+
+            <div id="automotiveOptions" class="options">
+                <label for="automotiveModel">Choose an automotive battery model:</label>
+                <select id="automotiveModel" name="automotiveModel">
+                    <option value="exideEpiq">Exide Epiq</option>
+                    <option value="exideMatrix">Exide Matrix</option>
+                    <option value="exideMileage">Exide Mileage</option>
+                    <option value="exideEezy">Exide Eezy</option>
+                    <option value="exideXpress">Exide Xpress</option>
+                    <option value="exideJaikisan">Exide Jaikisan</option>
+                    <option value="exideDrive">Exide Drive</option>
+                    <option value="exideRide">Exide Ride</option>
+                    <option value="exideEko">Exide Eko</option>
+                    <option value="exideMileageIss">Exide Mileage ISS</option>
+                </select>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="result" class="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
