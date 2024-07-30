@@ -17,18 +17,36 @@ document.getElementById('batteryForm').addEventListener('submit', function (e) {
     var date = document.getElementById('date').value;
     var batteryType = document.getElementById('batteryType').value;
     var model = batteryType === 'motorcycle' ? document.getElementById('motorcycleModel').value : document.getElementById('automotiveModel').value;
-    var result = document.getElementById('result');
+    var modalResult = document.getElementById('modalResult');
     
     var warrantyInfo = getWarrantyInfo(model, date);
 
-    result.innerHTML = `
+    modalResult.innerHTML = `
         <h2>Warranty Information</h2>
-        <p>Date: ${date}</p>
+        <p>Date: ${formatDate(date)}</p>
         <p>Battery Type: ${batteryType.charAt(0).toUpperCase() + batteryType.slice(1)}</p>
         <p>Model: ${model.replace(/([A-Z])/g, ' $1').trim()}</p>
-        <p>${warrantyInfo}</p>
+        <h3>Months Completed: ${warrantyInfo.monthsCompleted}</h3>
+        <h4>${warrantyInfo.message}</h4>
     `;
+
+    // Show the modal
+    var modal = document.getElementById('warrantyModal');
+    modal.style.display = "block";
+
+    // Close the modal when the user clicks on <span> (x)
+    document.getElementsByClassName('close')[0].onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Close the modal when the user clicks anywhere outside of the modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 });
+
 
 function getWarrantyInfo(model, purchaseDate) {
     const today = new Date();
@@ -130,10 +148,24 @@ function getWarrantyInfo(model, purchaseDate) {
     };
 
     const warranty = warranties[model];
+    let warrantyMessage = "Warranty expired";
     for (let i = 0; i < warranty.length; i++) {
         if (diffMonths <= warranty[i].months) {
-            return warranty[i].message;
+            warrantyMessage = warranty[i].message;
+            break;
         }
     }
-    return "Warranty expired";
+
+    return {
+        message: warrantyMessage,
+        monthsCompleted: diffMonths
+    };
+}
+
+function formatDate(date) {
+    const d = new Date(date);
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
+    return `${day}-${month}-${year}`;
 }
